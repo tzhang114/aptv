@@ -1,4 +1,7 @@
 #EXTM3U x-tvg-url="https://live.fanmingming.cn/e.xml"
 
-#EXTINF:-1 group-title="测试",APTV 官方测试源
-https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u
+# 个人 APTV 播放列表
+# 作者：tzhang114
+
+#EXTINF:-1 tvg-name="NHK World" group-title="国际",NHK World
+https://cdn.nhkworld.jp/www11/nhkworld-tv/domestic/2003459/live.m3u8
