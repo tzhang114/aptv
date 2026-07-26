@@ -154,6 +154,110 @@ GitHub：tzhang114
 </div>
 
 </div>
+    
+<script>
 
+let channels=[];
+
+function render(){
+
+    let list=document.getElementById("channelList");
+
+    if(channels.length===0){
+
+        list.innerHTML="<p>目前还没有频道。</p >";
+
+        return;
+
+    }
+
+    let html="";
+
+    channels.forEach((c,index)=>{
+
+        html+=`
+        <div class="channel">
+
+        <b>${c.name}</b><br>
+
+        分组：${c.group}<br>
+
+        <small>${c.url}</small><br><br>
+
+        <button onclick="removeChannel(${index})">
+        删除
+        </button>
+
+        </div>
+        `;
+
+    });
+
+    list.innerHTML=html;
+
+}
+
+document.getElementById("addBtn").onclick=function(){
+
+    let name=document.getElementById("name").value.trim();
+
+    let group=document.getElementById("group").value;
+
+    let url=document.getElementById("url").value.trim();
+
+    if(name==""||url==""){
+
+        alert("请输入频道名称和播放地址");
+
+        return;
+
+    }
+
+    channels.push({
+
+        name:name,
+
+        group:group,
+
+        url:url
+
+    });
+
+    localStorage.setItem("aptv",JSON.stringify(channels));
+
+    render();
+
+    document.getElementById("name").value="";
+
+    document.getElementById("url").value="";
+
+};
+
+function removeChannel(i){
+
+    channels.splice(i,1);
+
+    localStorage.setItem("aptv",JSON.stringify(channels));
+
+    render();
+
+}
+
+window.onload=function(){
+
+    let data=localStorage.getItem("aptv");
+
+    if(data){
+
+        channels=JSON.parse(data);
+
+    }
+
+    render();
+
+};
+
+</script>
+    
 </body>
 </html>
